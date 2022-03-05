@@ -226,35 +226,44 @@ void Procesamiento::procesoEjecucion(){
       restante--;
 }*/
 void Procesamiento::procesosListos(){
-        cout << "\n| Num. de procesos restantes: " << nuevo.size()-1 << "   |";
-      cout<<"\n\n-------------------------\t\t-------------------------------------------------------------------------";
-      cout << "\n| Procesos Listos  \t|\t\t| Proceso en Ejecucion  \t\t\t\t\t\t|";
-      cout << "\n-------------------------\t\t-------------------------------------------------------------------------";
-      cout<<endl<<"ID\t\tTME\t\t\tID\t\tTME\t\tT. Transcurrido\t\tTiempo Restante\n"<<endl;
-
-      for(int x = 1; x <= listo.size();x++){
+    cout << "\n| Num. de procesos restantes: " << nuevo.size()-1 << "   |";
+    cout<<"\n\n-------------------------\t\t-------------------------------------------------------------------------";
+    cout << "\n| Procesos Listos  \t|\t\t| Proceso en Ejecucion  \t\t\t\t\t\t|";
+    cout << "\n-------------------------\t\t-------------------------------------------------------------------------";
+    cout<<endl<<"ID\t\tTME\t\t\tID\t\tTME\t\tT. Transcurrido\t\tTiempo Restante\n"<<endl;
+    int si = 1;
+    for(int x = 1; x <= listo.size();x++){
+        cout << endl;
+        // PROCESOS LISTOS
         processcola(listo.front());
+        if(si==1){
+            // PROCESO EJECUCIÓN
+            cout << "\t\t\t" <<processid[temp] <<"\t\t00:";
+            if(timemax[temp]<9)
+                cout <<"0";
+            cout << timemax[temp] <<"\t";
+            si = 0;
+            cout<<"\t00:00:";
+            if(timeTotal[temp]<=9)
+                cout <<"0";
+            cout << timeTotal[temp]<<"\t\t00:00:";
+            timeTotal[temp]++;
+            if(timeRestante[temp]<=9)
+                cout <<"0";
+            cout << timeRestante[temp];
+            timeRestante[temp]--;
 
+            if(timeRestante[temp]==0){
+                finalizados.push(temp);
+                temp=listo.front()-1;
+                listo.pop();
+            }
+            restante--;
+        }
+        // PROCESOS LISTOS
         listo.push(listo.front());
         listo.pop();
     }
-    processejec(temp);
-      cout<<"\t00:00:";
-      if(timeTotal[temp]<=9)
-        cout <<"0";
-      cout << timeTotal[temp]<<"\t\t00:00:";
-      timeTotal[temp]++;
-      if(timeRestante[temp]<=9)
-        cout <<"0";
-      cout << timeRestante[temp] << endl;
-      timeRestante[temp]--;
-
-      if(timeRestante[temp]==0){
-        finalizados.push(temp);
-        temp=listo.front()-1;
-        listo.pop();
-      }
-      restante--;
 }/*
 void Procesamiento::procesoEjecucion(){
   cout << "\n--------------------------------------------------------\n| Proceso en Ejecucion  \t\t\t\t|\n--------------------------------------------------------" << endl;
@@ -297,7 +306,7 @@ void Procesamiento::colaProcesos(){/*
 }
 
 void Procesamiento::procesoFinalizado(){
-	cout << "\n-----------------------------------\n| Procesos Finalizados  \t  |\n-----------------------------------" << endl;
+	cout << "\n\n-----------------------------------\n| Procesos Finalizados  \t  |\n-----------------------------------" << endl;
       cout << "ID\tOperacion\tResultado" << endl;
       for(int g = 0; g < finalizados.size(); g++){
         processfin(finalizados.front());
@@ -329,14 +338,15 @@ void Procesamiento::procesosBloqueados(){
 
 // PROCESOS
 void Procesamiento::processcola(int i){
-  cout << processid[i] << "\t\t" << timemax[i] << endl;//cout <<tiempotranscurrido[i];
+  cout << processid[i] << "\t\t" << timemax[i];//cout <<tiempotranscurrido[i];
 }
+/*
 void Procesamiento::processejec(int i){
   cout << "\t\t\t\t\t" <<processid[i] <<"\t\t00:";
   if(timemax[i]<9)
     cout <<"0";
   cout << timemax[i] <<"\t";
-}
+}*/
 void Procesamiento::processfin(int i){
   cout << processid[i] << "\t";
   if(state[i]==0){

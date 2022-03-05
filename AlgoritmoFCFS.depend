@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1646446177 source:f:\protegida\desc\6. semestre\6. 5. s. sists. oper\actividades. act. 6\algoritmofcfs\lote.cpp
+1646518072 source:f:\protegida\desc\6. semestre\6. 5. s. sists. oper\actividades. act. 6\algoritmofcfs\lote.cpp
 	"lote.h"
 
-1646451739 f:\protegida\desc\6. semestre\6. 5. s. sists. oper\actividades. act. 6\algoritmofcfs\lote.h
+1646468143 f:\protegida\desc\6. semestre\6. 5. s. sists. oper\actividades. act. 6\algoritmofcfs\lote.h
 	<iostream>
 	<string>
 	<vector>
@@ -10,7 +10,7 @@
 	<unistd.h>
 	<bits/stdc++.h>
 
-1646451385 source:f:\protegida\desc\6. semestre\6. 5. s. sists. oper\actividades. act. 6\algoritmofcfs\main.cpp
+1646468000 source:f:\protegida\desc\6. semestre\6. 5. s. sists. oper\actividades. act. 6\algoritmofcfs\main.cpp
 	<iostream>
 	<string>
 	<unistd.h>
