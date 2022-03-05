@@ -64,7 +64,7 @@ public:
   void cambioLoteRellenado();//Se cargan los nuevos datos del lote
   void estados();
   void tmeMulti(int num);
-  void identificadorMulti(int num);
+  void setIdentificador(int num);
   void setNuevo(int num);
   void configOperador();
   void setlote();//Asigna lotes y agrega prioridad en los lotes

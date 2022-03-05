@@ -31,7 +31,7 @@ void Procesamiento::estados(){
 void Procesamiento::configProcesos(){
   for(int i=0;i<nproces;i++){
     setNuevo(i);//Mete a cola de procesos nuevos
-    identificadorMulti(i);
+    setIdentificador(i);
     tmeMulti(i); // Tiempo entre 6 y 16
     estados();
     configOperador();// Es equivalente a configoper y operacion
@@ -40,7 +40,7 @@ void Procesamiento::configProcesos(){
 void Procesamiento::setNuevo(int num){// ID random
   nuevo.push(num+1);
 }
-void Procesamiento::identificadorMulti(int num){// ID random
+void Procesamiento::setIdentificador(int num){// ID random
   processid.push_back(num+1);
 }
 void Procesamiento::tmeMulti(int num){ // Tiempo
@@ -52,7 +52,7 @@ void Procesamiento::tmeMulti(int num){ // Tiempo
 }
 void Procesamiento::configOperador(){ // Operacion
   float n1= 1 + (rand() % 100);
-  float n2= 1 + (rand() % 100);
+  float n2= 1 + (rand() % 99);
   num1.push_back(n1);
   num2.push_back(n2);
   int oper= 1 + (rand() % 5);
@@ -112,7 +112,7 @@ void Lote::cambioLoteRellenado(){
 
 void Procesamiento::asignarListos(){
   cout<<nuevo.size();
-  while((listo.size()<5)){
+  while((listo.size()<4)){
     cout<<"Paso de parametro";
     listo.push(nuevo.front());
     nuevo.pop();
@@ -157,23 +157,23 @@ void Procesamiento::imprimir(){
   int actual = 0;
   contseg = 0;
   contmin = 0;
-  temp=fila.front();
+  temp=listo.front()-1;
 
     system("cls");
     restante = timemax[actual];
-    temp=fila.front();
+   // temp=fila.front();
     for(int x = 1 ; x < timeProgram ; x++){
-	  if(filaLote.size()==0){
+	  if(finalizados.size()==nproces){
 	  	 finalizado();
          x=timeProgram;
 	  }
-	  colaProcesos();
-	  if(filaLote.size()==0&&fila.size()==0){
+	  procesosListos();
+	  if(finalizados.size()==nproces){
          finalizado();
 		 x=timeProgram;
 	  }
 	  else{
-	  	    procesoActual();
+	  	    procesoEjecucion();
 	        procesoFinalizado();
 	  }
       sleep(1);
@@ -186,11 +186,11 @@ void Procesamiento::imprimir(){
         tecla = getch();
         funcionkbhit(tecla);
         }
-        if(fila.size()==0){
+        /*if(fila.size()==0){
         	if((filaLote.size()-1)==0){
         		x=timeProgram;
 			}
-		}
+		}*/
    }
     finalizado();
 }
@@ -212,15 +212,19 @@ void Procesamiento::procesoEjecucion(){
       cout << "ID\t\tTME\t\tT. Transcurrido\t\tTiempo Restante\n";
       processejec(temp);
       cout<<"00:00:";
-      if(timeRestante[temp-1]<=9)
+      if(timeTotal[temp]<=9)
         cout <<"0";
-      cout << timeRestante[temp-1]<<"\t\t\t00:00:";
-      timeRestante[temp-1]++;
-      if(restante<=9)
+      cout << timeTotal[temp]<<"\t\t\t00:00:";
+      timeTotal[temp]++;
+      if(timeRestante[temp]<=9)
         cout <<"0";
-      cout << restante << endl;
-      if(restante==1){
-        fila.pop();
+      cout << timeRestante[temp] << endl;
+      timeRestante[temp]--;
+
+      if(timeRestante[temp]==0){
+        finalizados.push(temp);
+        temp=listo.front()-1;
+        listo.pop();
       }
       restante--;
 }

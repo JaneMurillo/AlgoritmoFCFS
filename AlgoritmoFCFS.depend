@@ -16,3 +16,20 @@
 	<unistd.h>
 	"lote.h"
 
+1646463096 source:c:\users\victo\desktop\portafolio 2 semestre\sexto semestre\sem. sistemas operativos\algoritmofcfs\lote.cpp
+	"lote.h"
+
+1646458705 c:\users\victo\desktop\portafolio 2 semestre\sexto semestre\sem. sistemas operativos\algoritmofcfs\lote.h
+	<iostream>
+	<string>
+	<vector>
+	<conio.h>
+	<unistd.h>
+	<bits/stdc++.h>
+
+1646454498 source:c:\users\victo\desktop\portafolio 2 semestre\sexto semestre\sem. sistemas operativos\algoritmofcfs\main.cpp
+	<iostream>
+	<string>
+	<unistd.h>
+	"lote.h"
+
