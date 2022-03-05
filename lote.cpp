@@ -116,7 +116,7 @@ void Procesamiento::asignarListos(){
         listo.push(nuevo.front());
         nuevo.pop();
     }
-}
+}/*
 void Procesamiento::procesoActual(){
     if(timemax[temp]==timeRestante[temp]||timeRestante[temp]==0){
         temp=fila.front();
@@ -150,7 +150,7 @@ void Procesamiento::procesoActual(){
 		  	fila.pop();
 		  }
       }
-}
+}*/
 
 void Procesamiento::imprimir(){
   int actual = 0;
@@ -230,7 +230,7 @@ void Procesamiento::procesosListos(){
     cout<<"\n\n-------------------------\t\t-------------------------------------------------------------------------";
     cout << "\n| Procesos Listos  \t|\t\t| Proceso en Ejecucion  \t\t\t\t\t\t|";
     cout << "\n-------------------------\t\t-------------------------------------------------------------------------";
-    cout<<endl<<"ID\t\tTME\t\t\tID\t\tTME\t\tT. Transcurrido\t\tTiempo Restante\n"<<endl;
+    cout<<endl<<"ID\t\tTME\t\t\tID\t\tTME\t\tT. Transcurrido\t\tTiempo Restante\n";
     int si = 1;
     for(int x = 1; x <= listo.size();x++){
         cout << endl;
