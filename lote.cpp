@@ -111,18 +111,10 @@ void Lote::cambioLoteRellenado(){
 }*/
 
 void Procesamiento::asignarListos(){
-<<<<<<< HEAD
   //cout<<nuevo.size();
   while((listo.size()<4)){
         listo.push(nuevo.front());
         nuevo.pop();
-=======
-  cout<<nuevo.size();
-  while((listo.size()<4)){
-    cout<<"Paso de parametro";
-    listo.push(nuevo.front());
-    nuevo.pop();
->>>>>>> 0bdd4603e67ed0b4e95d95794eaabdc395d087d2
     }
 }
 void Procesamiento::procesoActual(){
@@ -180,11 +172,7 @@ void Procesamiento::imprimir(){
 		 x=timeProgram;
 	  }
 	  else{
-<<<<<<< HEAD
 	  	    //procesoEjecucion();
-=======
-	  	    procesoEjecucion();
->>>>>>> 0bdd4603e67ed0b4e95d95794eaabdc395d087d2
 	        procesoFinalizado();
 	  }
       sleep(1);
@@ -248,7 +236,6 @@ void Procesamiento::procesosListos(){
         processcola(listo.front());
 
         listo.push(listo.front());
-<<<<<<< HEAD
         listo.pop();
     }
     processejec(temp);
@@ -256,19 +243,6 @@ void Procesamiento::procesosListos(){
       if(timeTotal[temp]<=9)
         cout <<"0";
       cout << timeTotal[temp]<<"\t\t00:00:";
-=======
-        listo.pop();  //ahcarai
-        }
-}
-void Procesamiento::procesoEjecucion(){
-  cout << "\n-----------------------------------------\n| Proceso en Ejecucion  \t\t\t\t|\n-----------------------------------------" << endl;
-      cout << "ID\t\tTME\t\tT. Transcurrido\t\tTiempo Restante\n";
-      processejec(temp);
-      cout<<"00:00:";
-      if(timeTotal[temp]<=9)
-        cout <<"0";
-      cout << timeTotal[temp]<<"\t\t\t00:00:";
->>>>>>> 0bdd4603e67ed0b4e95d95794eaabdc395d087d2
       timeTotal[temp]++;
       if(timeRestante[temp]<=9)
         cout <<"0";
